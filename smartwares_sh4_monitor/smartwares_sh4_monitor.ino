@@ -71,6 +71,7 @@ void ICACHE_RAM_ATTR handleInterrupt() {
       }
 
       if (bitCounter == _numBits - 1) {
+         _message = message;
         remoteId = message >> 16;
         state = message >> 4 & 1;
         _channel = message & 15;
@@ -162,4 +163,6 @@ void enviardatos() {
   Serial.print(_channel);
   Serial.print(" / State: ");
   Serial.println(state);
+  Serial.print(" command ");
+  Serial.println(_message);
 }
